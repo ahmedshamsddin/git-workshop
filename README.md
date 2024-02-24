@@ -1,1 +1,1 @@
-# An javaFX Inventory Management System
+# A javaFX Inventory Management System
