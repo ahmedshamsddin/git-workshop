@@ -7,6 +7,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 /**
  * JavaFX App
@@ -14,15 +18,23 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
+    private static final String DATABASE_URL = "jdbc:sqlite:ims.db";
 
     @Override
     public void start(Stage stage) throws IOException {
+        try (Connection connection = DriverManager.getConnection(DATABASE_URL)) {
+            System.out.println("Connection to database has been established.");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+
+        }
+
+
         scene = new Scene(loadFXML("primary"), 640, 480);
         stage.setScene(scene);
         stage.show(); 
     }
         
-
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
@@ -32,6 +44,8 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
+
+ 
     public static void main(String[] args) {
         launch();
     }
