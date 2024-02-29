@@ -24,6 +24,24 @@ class itemlist extends Application {
     private TableView<InventoryItem> tableView;
     private final ObservableList<InventoryItem> data = FXCollections.observableArrayList();
 
+    public class FXMLExample extends Application{
+
+        public void main(String[] args) {
+            launch(args);
+        }
+    
+        @Override
+        public void start(Stage primaryStage) throws Exception {
+            FXMLLoader loader = new FXMLLoader();
+           // loader.setLocation(new URL("file:///C:/data/hello-world.fxml"));
+            VBox vbox = loader.<VBox>load();
+    
+            Scene scene = new Scene(vbox);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        }
+    }
+
     @SuppressWarnings("unchecked")
     @Override
     public void start(Stage stage) throws IOException{
