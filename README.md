@@ -3,4 +3,5 @@
 
 ## Setting up the database:
 Run the following command to create the database schema:
-```mvn flyway:migrate```
+Windows: ```mvnw.cmd flyway:migrate```
+Linux/MacOS: ```./mvnw flyway:migrate```

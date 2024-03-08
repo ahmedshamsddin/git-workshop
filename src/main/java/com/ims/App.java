@@ -3,7 +3,7 @@ package com.ims;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.Scene; 
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -26,12 +26,16 @@ public class App extends Application {
             System.out.println("Connection to database has been established.");
         } catch (Exception e) {
             System.out.println(e.getMessage());
-
         }
 
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("add_item.fxml"));
+        
+        // loader.setController(new AddItemController());
+        Parent root = loader.load();
 
-        scene = new Scene(loadFXML("primary"), 640, 480);
+        scene = new Scene(root, 600, 600);
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show(); 
     }
         
@@ -44,8 +48,6 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
-
- 
     public static void main(String[] args) {
         launch();
     }
